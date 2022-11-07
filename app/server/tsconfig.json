@@ -13,10 +13,11 @@
     "baseUrl": "./",
     "incremental": true,
     "skipLibCheck": true,
+    "typeRoots": ["node_modules/@types", "src/server/@types"],
     "paths": {
       "@src/*": ["src/*"]
     }
   },
-  "include": ["src/*.ts"],
+  "include": ["src/**/*.ts"],
   "exclude": ["node_modules"]
 }

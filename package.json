@@ -1,6 +1,6 @@
 {
   "name": "uploader",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Monorepo for image uploader challenge",
   "main": "index.ts",
   "scripts": {

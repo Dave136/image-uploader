@@ -1,5 +1,9 @@
-import fastify, { type FastifyReply, type FastifyRequest } from 'fastify';
+import fastify from 'fastify';
 import cors from '@fastify/cors';
+import multer from 'fastify-multer';
+import fastifyStatic from '@fastify/static';
+import * as path from 'path';
+import routes from './routes';
 
 (async () => {
   const app = fastify();
@@ -7,12 +11,12 @@ import cors from '@fastify/cors';
   const port = +process.env.PORT || 5000;
 
   app.register(cors);
-
-  app.get('/', (req: FastifyRequest, reply: FastifyReply) => {
-    reply.send({
-      message: 'Hi from API',
-    });
+  app.register(multer.contentParser);
+  app.register(fastifyStatic, {
+    root: path.join(__dirname, 'uploads'),
+    prefix: '/',
   });
+  app.register(routes);
 
   app.listen(
     {
