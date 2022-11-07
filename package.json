@@ -1,0 +1,45 @@
+{
+  "name": "uploader",
+  "version": "0.0.1",
+  "description": "Monorepo for image uploader challenge",
+  "main": "index.ts",
+  "scripts": {
+    "dev:server": "pnpm -r --filter \"@uploader/server\" --parallel run dev",
+    "dev:client": "pnpm -r --filter \"@uploader/client\" --parallel run dev",
+    "dev": "pnpm -r --filter=./app/** --parallel run dev",
+    "build:server": "pnpm -r --filter \"@uploader/server\" --parallel run build",
+    "build:client": "pnpm -r --filter \"@uploader/client\" --parallel run build",
+    "build": "pnpm -r --filter=./app/** --parallel run build",
+    "client:preview": "pnpm -r --filter \"@uploader/client\" --parallel run preview",
+    "lint": "eslint .",
+    "lint:fix": "nr lint --fix",
+    "start:server": "node ./dist/server/index.js"
+  },
+  "keywords": [
+    "monorepo",
+    "image-uploader",
+    "image",
+    "backend",
+    "react",
+    "typescript"
+  ],
+  "author": "David Arenas <davejs136@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.42.0",
+    "@typescript-eslint/parser": "^5.42.0",
+    "eslint": "^8.27.0",
+    "eslint-plugin-react": "^7.31.10",
+    "lint-staged": "^13.0.3",
+    "simple-git-hooks": "^2.8.1",
+    "typescript": "^4.8.4"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged"
+  },
+  "lint-staged": {
+    "{packages}/**/*.{js,ts,tsx,json}": [
+      "eslint --fix"
+    ]
+  }
+}
