@@ -60,10 +60,12 @@ export default function (
             console.error(err);
             return reply
               .status(500)
-              .send('There was an error while uploading the image');
+              .send('There was an error while getting the image');
           }
 
-          return reply.send(data.Body);
+          return reply.send(
+            Buffer.from(data.Body as ArrayBuffer).toString('base64'),
+          );
         },
       );
     },
