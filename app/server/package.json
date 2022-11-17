@@ -24,8 +24,11 @@
   },
   "dependencies": {
     "@fastify/cors": "^8.1.1",
+    "@fastify/env": "^4.1.0",
     "@fastify/static": "^6.5.0",
+    "aws-sdk": "^2.1256.0",
     "fastify": "^4.9.2",
-    "fastify-multer": "^2.0.3"
+    "fastify-multer": "^2.0.3",
+    "fastify-plugin": "^4.3.0"
   }
 }

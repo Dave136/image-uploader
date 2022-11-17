@@ -1,24 +1,45 @@
 import fastify from 'fastify';
 import cors from '@fastify/cors';
 import multer from 'fastify-multer';
-import fastifyStatic from '@fastify/static';
-import * as path from 'path';
+import path from 'path';
+import env from '@fastify/env';
 import routes from './routes';
-import { generateUploadFolder } from './utils';
+import s3Plugin from './plugins/s3';
+
+const schema = {
+  type: 'object',
+  required: [
+    'PORT',
+    'FILEBASE_S3_API_VERSION',
+    'FILEBASE_S3_ACCESS_KEY',
+    'FILEBASE_S3_SECRET_KEY',
+    'FILEBASE_S3_ENDPOINT',
+    'FILEBASE_S3_REGION',
+    'FILEBASE_S3_BUCKET',
+  ],
+  properties: {
+    PORT: {
+      type: 'string',
+      default: 5000,
+    },
+  },
+};
 
 (async () => {
   const app = fastify();
+  const { PORT } = process.env;
   const host = '0.0.0.0';
-  const port = +process.env.PORT || 5000;
+  const port = +PORT || 5000;
 
-  generateUploadFolder();
-
+  app.register(env, {
+    schema,
+    dotenv: {
+      path: path.join(__dirname, '../.env'),
+    },
+  });
   app.register(cors);
   app.register(multer.contentParser);
-  app.register(fastifyStatic, {
-    root: path.join(__dirname, 'uploads'),
-    prefix: '/',
-  });
+  app.register(s3Plugin);
   app.register(routes);
 
   app.listen(

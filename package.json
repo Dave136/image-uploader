@@ -13,7 +13,7 @@
     "client:preview": "pnpm -r --filter \"@uploader/client\" --parallel run preview",
     "lint": "eslint .",
     "lint:fix": "nr lint --fix",
-    "start:server": "node ./dist/server/index.js"
+    "start:server": "pnpm -r --filter \"@uploader/server\" --parallel run start"
   },
   "keywords": [
     "monorepo",
