@@ -34,9 +34,9 @@ const UploadedImage = () => {
         />
       ) : (
         <div className="animate-pulse">
-          <div className="flex justify-center items-center w-full h-56 bg-gray-300 rounded sm:w-96 dark:bg-zinc-700">
+          <div className="flex justify-center items-center w-[21.125rem] h-56 bg-custom-color-2 rounded sm:w-96 dark:bg-zinc-700">
             <svg
-              className="w-12 h-12 text-gray-200"
+              className="w-12 h-12 text-gray-400 dark:text-gray-200"
               xmlns="http://www.w3.org/2000/svg"
               aria-hidden="true"
               fill="currentColor"
