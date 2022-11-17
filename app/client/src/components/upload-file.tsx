@@ -4,6 +4,9 @@ import { useApp } from '../context/app-context';
 import DropZone from './drop-zone';
 import MainWrapper from './main-wrapper';
 
+// 1024 * 1024 = 1048576 -> 1mb
+const LIMIT_IMAGE_SIZE = 1048576;
+
 const UploadFile = () => {
   const { setIsLoading, updateImage, setError } = useApp();
   const fileRef = useRef<HTMLInputElement>(null);
@@ -11,9 +14,15 @@ const UploadFile = () => {
   const handlerFile = async (files: File[]) => {
     try {
       setIsLoading(true);
+      const file = files[0];
       const formData = new FormData();
 
-      formData.append('image', files[0]);
+      if (file.size > LIMIT_IMAGE_SIZE) {
+        setError('Image size exceeds limit');
+        return;
+      }
+
+      formData.append('image', file);
 
       const { data } = await axios.post('/api/v1/upload', formData);
 
