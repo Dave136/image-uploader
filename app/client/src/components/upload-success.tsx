@@ -20,7 +20,7 @@ const UploadSuccess = () => {
           Uploaded Successfully!
         </h1>
         <UploadedImage />
-        <div className="mt-[1.5625rem] min-w-[21.125rem] mb-[2.0625rem]">
+        <div className="mt-[1.5625rem] w-[21.125rem] mb-[2.0625rem]">
           <div className="border border-custom-color-1 bg-custom-color-2 h-[2.125rem] rounded-lg w-full flex items-center p-2 pr-0 dark:bg-zinc-600 dark:border-zinc-700">
             <p className="truncate text-[.5rem] w-full pr-2 text-custom-color dark:text-gray-200">
               {uploadedPath}
