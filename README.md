@@ -60,6 +60,7 @@ This application was created as a submission to a [DevChallenges](https://devcha
 - Dark Mode
 - Error page
 - Image limit size
+- Skeleton loader
 
 ## How To Use
 
