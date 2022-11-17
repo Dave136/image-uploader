@@ -3,7 +3,7 @@ import MainWrapper from './main-wrapper';
 import errorImage from '../assets/error.svg';
 
 const UploadError = () => {
-  const { resetAll } = useApp();
+  const { error, resetAll } = useApp();
 
   return (
     <MainWrapper>
@@ -17,7 +17,7 @@ const UploadError = () => {
           Oops! ☹️
         </h1>
         <p className="text-center text-custom-color text-[.625rem] mt-4 dark:text-gray-100">
-          There was a problem while uploading image
+          {error ?? 'There was a problem while uploading image'}
         </p>
         <div className="mt-[1.5625rem] max-w-[21.125rem] mb-[2.0625rem]">
           <button
