@@ -47,7 +47,7 @@ const createProcess =
   };
 
 const createBond = (
-  process: typeof createProcess,
+  process: (dataTransfer: DataTransfer, event?: unknown) => void,
   setOver: React.Dispatch<React.SetStateAction<boolean>>
 ): DropArea => ({
   onDragOver: (event) => event.preventDefault(),
